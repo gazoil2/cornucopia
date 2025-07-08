@@ -246,7 +246,7 @@ const GameSimulation: React.FC<GameSimulationProps> = ({ initialState, onGameEnd
       </div>
 
       <div
-        className={`w-full max-w-5xl p-8 mb-10 rounded-2xl shadow-2xl ${glassmorphismStyle} hover:shadow-3xl transition-all duration-500`}
+        className={`w-full max-w-7xl min-h-220 p-8 mb-10 rounded-2xl shadow-2xl ${glassmorphismStyle} hover:shadow-3xl transition-all duration-500`}
       >
         <h3
           className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
@@ -254,7 +254,7 @@ const GameSimulation: React.FC<GameSimulationProps> = ({ initialState, onGameEnd
         >
           📜 Events
         </h3>
-        <div className="space-y-4 max-h-[50vh] overflow-y-auto pr-4 custom-scrollbar">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[60vh] overflow-y-auto pr-4 custom-scrollbar">
           {getRecentEvents().map((event, index) => {
             const eventTag = renderEventTag(event)
             const actor = gameState.participants.find((p) => p.id === event.participants[0])
@@ -292,16 +292,16 @@ const GameSimulation: React.FC<GameSimulationProps> = ({ initialState, onGameEnd
             )
           })}
           {getRecentEvents().length === 0 && (
-            <div className="text-gray-400 italic text-center py-8 text-xl">
+            <div className="text-gray-400 italic text-center py-8 text-xl md:col-span-2">
               <div className="text-4xl mb-4">🌙</div>
               The arena is quiet... for now.
             </div>
           )}
-          <div ref={eventsEndRef} />
+          <div ref={eventsEndRef} className="md:col-span-2" />
         </div>
       </div>
 
-      <div className="w-full">
+      <div className="w-full max-w-7xl">
         <h3
           className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
           style={{ fontFamily: "'Cinzel', serif" }}
